@@ -28,6 +28,9 @@
 - 灵活的配置化管理（Agent/Chroma/RAG/Prompt 均可通过 YAML 配置）
 - 基于 Chroma DB 实现本地向量存储，保障数据隐私
 
+## 运行示例
+![文件上传到数据库](images/上传文件到数据库.jpg)
+
 ## 📋 环境准备
 ### 1. 依赖安装
 ```bash
