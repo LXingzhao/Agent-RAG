@@ -36,13 +36,7 @@
 ## 📋 环境准备
 ### 1. 依赖安装
 ```bash
-pip install -r requirements.txt  # 需补充项目依赖清单，示例核心依赖：
-# streamlit
-# chromadb
-# langchain
-# pypdf
-# python-dotenv
-# PyYAML
+pip install -r requirements.txt  
 ```
 ### 2.配置文件说明
 项目核心配置均存放于 config/ 目录：  
