@@ -1,0 +1,39 @@
+# 核心运行环境
+python>=3.10,<3.12  # 限定3.10+且不超过3.12（避免版本兼容问题）
+
+# 前端交互框架
+streamlit>=1.30.0,<2.0.0
+
+# RAG核心框架
+langchain>=0.1.0,<0.2.0
+langchain-community>=0.0.20,<0.1.0  # LangChain生态（对接ChromaDB/通义千问）
+langchain-core>=0.1.20,<0.2.0
+
+# 向量数据库
+chromadb>=0.4.0,<0.5.0
+pysqlite3-binary>=0.5.0  # ChromaDB底层SQLite依赖（解决部分环境sqlite3版本过低问题）
+
+# 大模型对接（通义千问）
+dashscope>=1.10.0  # 阿里云通义千问官方SDK
+openai>=1.0.0  # 可选：若适配多模型（如OpenAI），可保留
+
+# 文档解析（适配data目录下的PDF/TXT知识库）
+pypdf2>=3.0.0  # PDF文件解析
+python-docx>=0.8.11  # 可选：若有Word知识库可保留
+chardet>=5.2.0  # 解决TXT文件编码问题
+
+# 数据处理与嵌入
+numpy>=1.24.0
+sentence-transformers>=2.2.0  # 文本嵌入模型（ChromaDB检索用）
+pandas>=2.0.0  # 可选：数据清洗/日志分析
+
+# 配置文件解析
+pyyaml>=6.0.0  # 解析config目录下的yml配置文件
+
+# 日志与工具
+loguru>=0.7.0  # 日志输出（适配logs目录）
+python-dotenv>=1.0.0  # 环境变量管理（存储API密钥等敏感信息）
+md5>=2.0  # 适配md5.text文件的MD5校验
+
+# 网络请求
+requests>=2.31.0
