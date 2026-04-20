@@ -53,41 +53,37 @@ streamlit run app.py
 ## 📁 项目结构
 ```plaintext
 Agent-RAG/
-├── .gitignore                  # Git忽略规则文件
-├── LICENSE                     # 开源许可证文件
-├── README.md                   # 项目核心说明文档
-├── app.py                      # Streamlit应用主入口（Python文件）
-├── md5.text                    # MD5校验相关文本文件
-├── chroma_db/                  # Chroma向量库持久化目录
-│   └── chroma.sqlite3          # Chroma数据库文件（SQLite）
-├── config/                     # 项目配置目录
-│   ├── agent.yml               # Agent智能体配置文件（YAML）
-│   ├── chroma.yml              # Chroma向量库配置文件（YAML）
-│   ├── prompts.yml             # 提示词模板配置文件（YAML）
-│   └── rag.yml                 # RAG流程配置文件（YAML）
-├── rag/                        # RAG核心逻辑目录
-│   ├── __pycache__/            # Python编译缓存目录
-│   ├── chroma_db/              # RAG模块内Chroma相关子目录
-│   ├── rag_service.py          # RAG服务核心实现（Python文件）
-│   └── vector_store.py         # 向量存储操作逻辑（Python文件）
-├── model/                      # 大模型对接逻辑目录
-│   ├── __pycache__/            # Python编译缓存目录
-│   └── factory.py              # 模型工厂（多模型适配）（Python文件）
-├── logs/                       # 日志输出目录
-│   ├── agent_20260125.log      # 2026-01-25 Agent运行日志
-│   ├── agent_20260126.log      # 2026-01-26 Agent运行日志
-│   └── agent_20260420.log      # 2026-04-20 Agent运行日志
-├── data/                       # 知识库数据目录
-│   └── external/               # 外部知识库文件目录
-│       ├── 扫地机器人100问.pdf     # 扫地机器人知识库（PDF）
-│       ├── 扫地机器人100问2.txt    # 扫地机器人知识库（TXT）
-│       ├── 扫拖一体机器人100问.txt  # 扫拖一体机器人知识库（TXT）
-│       ├── 故障排除.txt            # 故障排除知识库（TXT）
-│       ├── 维护保养.txt            # 维护保养知识库（TXT）
-│       └── 选购指南.txt            # 选购指南知识库（TXT）
-├── agent/                      # Agent智能体核心目录（省略子文件）
-├── .idea/                      # IDE配置目录（省略子文件）
-└── prompts/                    # 提示词模板文件目录（省略子文件）
+├── .gitignore                # 忽略不需要提交的文件（缓存、日志、环境文件等）
+├── LICENSE                   # 开源许可证，说明项目使用权限
+├── README.md                 # 项目说明文档：介绍项目功能、启动方式、使用说明
+├── app.py                    # 项目主入口，Streamlit 网页界面 + 对话系统启动文件
+├── md5.text                  # 文件校验/缓存标记文件，用于判断知识库是否更新
+├── model/
+│   └── factory.py            # 模型工厂：统一创建 LLM、向量库、RAG 等模型实例
+├── agent/
+│   ├── react_agent.py        # ReAct 智能体核心：思考、调用工具、生成回答
+│   ├── chroma_db/            # Agent 内部使用的向量库缓存目录
+│   └── tools/                # 智能体工具包：如知识库查询、故障诊断、指令解析
+├── .idea/                    # PyCharm/IDEA 编辑器配置文件夹（开发环境自动生成）
+├── config/
+│   ├── agent.yml             # 智能体配置：思考次数、工具开关、行为参数
+│   ├── chroma.yml            # 向量库配置：路径、集合名、嵌入模型
+│   ├── prompts.yml           # 提示词模板配置：加载哪些 prompt、如何拼接
+│   └── rag.yml               # RAG 配置：检索数量、相似度阈值、重排序开关
+├── rag/
+│   ├── rag_service.py        # RAG 服务核心：检索知识库、拼接上下文
+│   ├── vector_store.py       # 向量库操作：创建索引、存入文档、查询相似内容
+│   └── chroma_db/            # RAG 模块自己的向量库存储目录
+├── chroma_db/                # 项目全局向量库目录（最终持久化位置）
+│   └── chroma.sqlite3        # Chroma 向量数据库文件（知识库向量化后存在这里）
+├── prompts/
+│   ├── main_prompt.txt       # 主提示词：定义机器人身份、语气、回答规则
+│   ├── rag_summarize.txt     # RAG 结果总结提示词：让模型根据知识库精简回答
+│   └── report_prompt.txt     # 报告生成提示词：用于生成对话总结/故障报告
+├── data/
+│   └── external/             # 外部知识库目录：放扫地机器人说明书、文档、资料
+├── utils/                    # 工具函数文件夹：日志、文件处理、字符串格式化等
+└── logs/                     # 日志目录：保存系统运行日志、对话记录、错误信息
 ```
 
 ## 📖 使用说明
