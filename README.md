@@ -28,7 +28,7 @@
 - 灵活的配置化管理（Agent/Chroma/RAG/Prompt 均可通过 YAML 配置）
 - 基于 Chroma DB 实现本地向量存储，保障数据隐私
 
-## 运行示例
+## ▶️ 运行示例
 ![用户报告1](images/用户报告1.png)
 ![用户报告2](images/用户报告2.png)
 ![结合天气地址回答](images/结合天气地址回答.png)
